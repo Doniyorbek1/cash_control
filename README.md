@@ -37,4 +37,4 @@ finance_productivity_bot/
 │
 ├── .env                     # BOT_TOKEN va DATABASE_URL saqlash uchun
 ├── requirements.txt         # Kutubxonalar ro'yxati
-└── main.py                  # Botni ishga tushirish fayli
+└── main.py                  # Botni ishga tushirish fayli# cash_control
