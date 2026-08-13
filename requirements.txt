@@ -1,0 +1,23 @@
+# Core Framework & Async Support
+aiogram>=3.10.0
+pydantic>=2.7.0
+pydantic-settings>=2.3.0
+
+# Database & ORM
+SQLAlchemy>=2.0.30
+asyncpg>=0.29.0
+alembic>=1.13.0
+
+# Scheduling & Reminders
+APScheduler>=3.10.4
+pytz>=2024.1
+
+# Data Analysis & Reporting
+pandas>=2.2.0
+openpyxl>=3.1.2
+matplotlib>=3.8.0
+
+# Utilities
+python-dotenv>=1.0.1
+aiohttp>=3.9.0
+aiosqlite>=0.20.0
