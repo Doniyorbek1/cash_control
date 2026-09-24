@@ -111,3 +111,14 @@ async def delete_reminder(callback: CallbackQuery, db_session: AsyncSession):
 
     await callback.message.edit_reply_markup(reply_markup=get_reminders_keyboard(reminders))
     await callback.answer("Eslatma o'chirildi!")
+
+@reminders_router.callback_query(F.data.startswith("info_rem_"))
+async def show_reminder_info(callback: CallbackQuery, db_session: AsyncSession):
+    rem_id = int(callback.data.split("_")[2])
+    reminder = await db_session.get(Reminder, rem_id)
+    if reminder and reminder.user_id == callback.from_user.id:
+        time_str = reminder.remind_at.strftime("%Y-%m-%d %H:%M")
+        info_text = f"⏰ Eslatma vaqti: {time_str}\n\n📌 Matn: {reminder.text}"
+        await callback.answer(info_text, show_alert=True)
+    else:
+        await callback.answer("Eslatma topilmadi!", show_alert=True)
