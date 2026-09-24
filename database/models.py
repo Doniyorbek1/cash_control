@@ -24,9 +24,10 @@ class User(Base):
 class Category(Base):
     __tablename__ = "categories"
 
-    id = Column(Integer, primary_key=True, autoincrement=True)  # BigInteger -> Integer ga o'zgartirildi
+    id = Column(Integer, primary_key=True, autoincrement=True)
     user_id = Column(BigInteger, ForeignKey("users.telegram_id", ondelete="CASCADE"), nullable=False)
     name = Column(String, nullable=False)
+    type = Column(SQLEnum(TransactionType), default=TransactionType.EXPENSE, nullable=True)
     is_default = Column(Boolean, default=False)
 
     user = relationship("User", back_populates="categories")
@@ -35,7 +36,7 @@ class Category(Base):
 class Transaction(Base):
     __tablename__ = "transactions"
 
-    id = Column(Integer, primary_key=True, autoincrement=True)  # BigInteger -> Integer ga o'zgartirildi
+    id = Column(Integer, primary_key=True, autoincrement=True)
     user_id = Column(BigInteger, ForeignKey("users.telegram_id", ondelete="CASCADE"), nullable=False)
     category_id = Column(Integer, ForeignKey("categories.id", ondelete="SET NULL"), nullable=True)
     amount = Column(Float, nullable=False)
@@ -49,7 +50,7 @@ class Transaction(Base):
 class Reminder(Base):
     __tablename__ = "reminders"
 
-    id = Column(Integer, primary_key=True, autoincrement=True)  # BigInteger -> Integer ga o'zgartirildi
+    id = Column(Integer, primary_key=True, autoincrement=True)
     user_id = Column(BigInteger, ForeignKey("users.telegram_id", ondelete="CASCADE"), nullable=False)
     text = Column(String, nullable=False)
     remind_at = Column(DateTime, nullable=False)
@@ -61,7 +62,7 @@ class Reminder(Base):
 class Task(Base):
     __tablename__ = "tasks"
 
-    id = Column(Integer, primary_key=True, autoincrement=True)  # BigInteger -> Integer ga o'zgartirildi
+    id = Column(Integer, primary_key=True, autoincrement=True)
     user_id = Column(BigInteger, ForeignKey("users.telegram_id", ondelete="CASCADE"), nullable=False)
     title = Column(String, nullable=False)
     is_completed = Column(Boolean, default=False)

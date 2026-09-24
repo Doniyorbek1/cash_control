@@ -4,6 +4,8 @@ class Settings(BaseSettings):
     BOT_TOKEN: str
     DATABASE_URL: str = "sqlite+aiosqlite:///./bot_database.db"
     DEFAULT_TIMEZONE: str = "Asia/Tashkent"
+    WEBHOOK_HOST: str = "https://yourdomain.com"
+    WEBHOOK_PATH: str = "/webhook"
 
     model_config = SettingsConfigDict(
         env_file=".env",

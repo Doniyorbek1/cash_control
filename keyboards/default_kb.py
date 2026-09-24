@@ -4,6 +4,10 @@ def get_main_keyboard() -> ReplyKeyboardMarkup:
     kb = [
         [
             KeyboardButton(text="💸 Xarajat qo'shish"),
+            KeyboardButton(text="💰 Kirim qo'shish")
+        ],
+        [
+            KeyboardButton(text="💳 Balans"),
             KeyboardButton(text="📊 Hisobotlar")
         ],
         [

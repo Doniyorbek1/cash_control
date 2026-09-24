@@ -46,3 +46,6 @@ yarl==1.24.5
 fastapi>=0.110.0
 uvicorn>=0.29.0
 a2wsgi>=1.10.0
+# Web Framework (Webhook uchun)
+Flask>=3.0.0
+gunicorn>=21.2.0
